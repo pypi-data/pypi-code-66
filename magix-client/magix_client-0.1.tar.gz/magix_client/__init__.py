@@ -1,0 +1,1 @@
+from magix_client.magix_client import MagixHttpClient
