@@ -1,0 +1,139 @@
+import logging
+import string
+import re
+
+from mjooln.core.name import Name
+from mjooln.atom.element import Element, ElementError
+
+logger = logging.getLogger(__name__)
+
+
+class Key(str):
+    """
+    Defines key string with limitations
+
+    - Minimum length is 3
+    - Allowed characters are
+        - Lower case ascii (a-z)
+        - Digits (0-9)
+        - Underscore (_)
+        - Double underscore (__)
+    - Underscore and digits can not be the first character
+    - Underscore can not be the last character
+    - The double underscore act as separator for groups in the key
+    - Triple underscore is reserved for separating keys from other keys or
+      strings, such as in class :class:`.Atom`
+
+    Sample keys::
+
+        'simple'
+        'with_longer_name'
+        'group_one__group_two__group_three'
+        'digit1'
+        'longer_digit2'
+        'group1__group2__group3'
+        'group_1__group_2__group_3'
+
+    """
+
+    ALLOWED_CHARACTERS = string.ascii_lowercase + string.digits + '_'
+    ALLOWED_STARTSWITH = string.ascii_lowercase
+    ALLOWED_ENDSWITH = string.ascii_lowercase + string.digits
+    MINIMUM_ALLOWED_LENGTH = 3
+
+    REGEX_STRING = r'[a-z][a-z_]*[a-z]'
+    RE = re.compile(REGEX_STRING)
+
+    # #: Separates key from other keys or elements, such as identity and zulu
+    # #: in Atom
+    # OUTER_SEPARATOR = '___'
+    #
+    # #: Separates groups in key
+    # SEPARATOR = '__'
+
+    def __new__(cls,
+                key: str):
+        # TODO: Add list as input, creating key with separator
+        cls.verify_key(key)
+        instance = super(Key, cls).__new__(cls, key)
+        return instance
+
+    def __repr__(self):
+        return f'Key(\'{self}\')'
+
+    def stub(self):
+        return self.__str__()
+
+    @classmethod
+    def verify_key(cls, key: str):
+        if not len(key) >= cls.MINIMUM_ALLOWED_LENGTH:
+            raise InvalidKey(f'Key too short. Key \'{key}\' has length '
+                             f'{len(key)}, while minimum length is '
+                             f'{cls.MINIMUM_ALLOWED_LENGTH}')
+        if Name.CLASS_SEPARATOR in key:
+            raise InvalidKey(f'Key contains element reserved as class '
+                             f'separator. '
+                             f'Key \'{key}\' cannot contain '
+                             f'\'{Name.CLASS_SEPARATOR}\'')
+        elements = key.split(Name.ELEMENT_SEPARATOR)
+        for element in elements:
+            try:
+                Element.verify_element(element)
+            except ElementError as ee:
+                raise InvalidKey(f'Error with element \'{element}\': {ee}') \
+                    from ee
+
+    @classmethod
+    def is_stub(cls,
+                key: str):
+        try:
+            cls.verify_key(key)
+            return True
+        except InvalidKey:
+            return False
+
+    def elements(self):
+        """ Returns key parts as defined by separator (double underscore)
+
+        Example::
+
+            key = Key('some_key__with_two__no_three_elements')
+            key.elements()
+                ['some_key', 'with_two', 'three_elements']
+
+        :returns: [str]
+        """
+        return [Element(x) for x in self.split(Name.ELEMENT_SEPARATOR)]
+
+    def with_separator(self,
+                       separator: str):
+        """ Replace separator
+
+        Example::
+
+            key = Key('some__key_that_could_be__path')
+            key.with_separator('/')
+                'some/key_that_could_be/path'
+
+        :param separator: Separator of choice
+        :type separator: str
+        :return: str
+        """
+        return separator.join(self.elements())
+
+    @classmethod
+    def elf(cls, key):
+        """ Allows key class to pass through instead of throwing exception
+
+        :param key: Input key string or key class
+        :type key: str or Key
+        :return: Key
+        """
+        if isinstance(key, Key):
+            return key
+        else:
+            return cls(key)
+
+
+class InvalidKey(Exception):
+    pass
