@@ -1,0 +1,28 @@
+from distutils.core import setup
+setup(
+  name = 'SerinasDecisionTree',         
+  packages = ['SerinasDecisionTree'],   
+  version = '0.1',      
+  license='MIT',       
+  description = 'A Python package for decision-tree based classification of data',   
+  author = 'Serina Grill',                  
+  author_email = 'serinagrill@gmail.com',      
+  url = 'https://github.com/serinamarie/SerinasDecisionTree',   
+  download_url = 'https://github.com/serinamarie/SerinasDecisionTree/archive/v_01.tar.gz',    # I explain this later on
+  keywords = ['python', 'decision tree', 'classifier'],   
+  install_requires=[            # I get to this in a second
+          'numpy'
+      ],
+  classifiers=[
+    'Development Status :: 3 - Alpha',     
+    'Intended Audience :: Developers',      
+    'Topic :: Software Development :: Build Tools',
+    'License :: OSI Approved :: MIT License',  
+    'Programming Language :: Python :: 3',      
+    'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+  ],
+)
