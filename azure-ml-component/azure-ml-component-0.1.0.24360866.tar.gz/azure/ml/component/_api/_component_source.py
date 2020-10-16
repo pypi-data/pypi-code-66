@@ -1,0 +1,158 @@
+# ---------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# ---------------------------------------------------------
+import ntpath
+import posixpath
+from contextlib import contextmanager
+
+from enum import Enum
+from pathlib import Path
+
+from azure.ml.component._api._component_snapshot import ComponentSnapshot
+from azure.ml.component._api._utils import _looks_like_a_url, _RE_GITHUB_URL
+from azureml.exceptions import UserErrorException
+
+
+class ComponentWorkingMechanism(Enum):
+    Normal = 'Normal'
+    OutputToDataset = 'OutputToDataset'
+
+
+class ComponentSourceType(Enum):
+    Local = 'Local'
+    GithubFile = 'GithubFile'
+    GithubFolder = 'GithubFolder'
+    DevopsArtifacts = 'DevopsArtifactsZip'
+
+
+class ComponentSource:
+    def __init__(
+            self,
+            source_type: ComponentSourceType,
+            spec_file: str = None,
+            package_zip: str = None,
+            snapshot=None,
+    ):
+        self._source_type = source_type
+        self._spec_file = spec_file
+        self._package_zip = package_zip
+        self._snapshot = snapshot
+
+    @property
+    def source_type(self):
+        return self._source_type
+
+    def is_local_source(self):
+        return self._source_type == ComponentSourceType.Local
+
+    @property
+    def spec_file(self):
+        return self._spec_file
+
+    @property
+    def package_zip(self):
+        return self._package_zip
+
+    @property
+    def snapshot(self):
+        return self._snapshot
+
+    def is_invalid_entry(self, entry_file):
+        # We only check whether the entry file for local source, since we don't download snapshot for remote sources.
+        if not self.is_local_source():
+            return False
+
+        # We don't check absolute path because it might be in the docker image which we are not able to check.
+        if self.is_absolute(entry_file):
+            return False
+
+        # If the entry file cannot be found in snapshot, it is invalid.
+        return not self.snapshot.file_exists(relative_path=entry_file)
+
+    @staticmethod
+    def is_absolute(file_path):
+        # Here we don't use Path(file).is_absolute because it can only handle the case in current OS,
+        # but in our scenario, we may run this code in Windows, but need to check whether the path is posix absolute.
+        return posixpath.isabs(file_path) or ntpath.isabs(file_path)
+
+    @staticmethod
+    def from_source(spec_file, package_zip, amlignore_file=None, logger=None):
+        if not logger:
+            raise ValueError('logger must be set.')
+
+        if not spec_file and not package_zip:
+            raise UserErrorException('Either --spec-file or --package-zip need to be specified.')
+
+        # Currently treat as devops build drop when package_zip is specified.
+        if package_zip:
+            # DevOps build drop currently can only specified with a url.
+            if not _looks_like_a_url(package_zip):
+                raise UserErrorException(
+                    'Currently --package-zip only accepts url. \n'
+                    'To register a module from local path, '
+                    'Use "az ml register --spec=/path/to/the/module/spec.yaml".\n'
+                    'The folder containing the spec file will be zipped and uploaded automatically.')
+
+            return ComponentSource(
+                source_type=ComponentSourceType.DevopsArtifacts,
+                spec_file=spec_file,
+                package_zip=package_zip,
+            )
+
+        # If package_zip not specified, check whether spec_file is a url
+        if _looks_like_a_url(spec_file):
+            if not _RE_GITHUB_URL.match(spec_file):
+                raise UserErrorException(
+                    'Invalid url for --spec-file. Expects to be a url to the spec file in a GitHub repo.\n'
+                    'e.g https://github.com/user/repo_name/blob/master/module_name/module_spec.yaml')
+
+            return ComponentSource(
+                source_type=ComponentSourceType.GithubFile,
+                spec_file=spec_file,
+            )
+
+        # Otherwise, create component source from local path
+        else:
+            path = Path(spec_file).resolve()
+            if not path.exists():
+                raise UserErrorException('File {0} not found.'.format(spec_file))
+
+            if path.is_dir():
+                raise UserErrorException('--spec-file could not be a folder.')
+
+            if path.suffix != '.yaml':
+                raise UserErrorException('Invalid file {0}. Only accepts *.yaml files.'.format(spec_file))
+
+            snapshot = ComponentSnapshot(path, additional_amlignore_file=amlignore_file)
+
+            return ComponentSource(
+                source_type=ComponentSourceType.Local,
+                spec_file=snapshot.spec_file_relative_path.as_posix(),
+                snapshot=snapshot,
+            )
+
+
+class ComponentSourceParams:
+    """Create param dict for component register/parse according to component source type."""
+
+    def __init__(self, source):
+        self._source = source
+        self._params = {
+            'component_source_type': self._source.source_type.value,
+            'yaml_file': self._source.spec_file,
+        }
+
+    @contextmanager
+    def create(self, spec_only=False):
+        # Used context manager here since the zip file for local component need to stay open.
+        if self._source.source_type == ComponentSourceType.Local:
+            snapshot = self._source.snapshot
+            zip_file = snapshot.create_spec_snapshot() if spec_only else snapshot.create_snapshot()
+            with open(zip_file, 'rb') as f:
+                self._params.update({'snapshot_source_zip_file': f})
+                yield self._params
+        elif self._source.source_type == ComponentSourceType.GithubFile:
+            yield self._params
+        elif self._source.source_type == ComponentSourceType.DevopsArtifacts:
+            self._params.update({'devops_artifacts_zip_url': self._source._package_zip})
+            yield self._params
