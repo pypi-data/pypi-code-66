@@ -1,0 +1,2 @@
+class SetOfParameters(object):
+    pass
