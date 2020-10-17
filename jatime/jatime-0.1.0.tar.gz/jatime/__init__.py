@@ -1,0 +1,8 @@
+__title__ = "jatime"
+__description__ = "Time Representation Analyzer for Japanese."
+__url__ = "https://github.com/poyo46/jatime"
+__version__ = "0.1.0"
+__author__ = "poyo46"
+__author_email__ = "poyo4rock@gmail.com"
+__license__ = "Apache 2.0"
+__copyright__ = "Copyright 2020 poyo46"
