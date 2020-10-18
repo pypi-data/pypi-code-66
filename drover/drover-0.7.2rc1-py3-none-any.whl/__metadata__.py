@@ -1,0 +1,7 @@
+VERSION = '0.7.2rc1'
+NAME = 'drover'
+AUTHOR = 'Jeffrey Wilges'
+AUTHOR_EMAIL = 'jeffrey@wilges.com'
+DESCRIPTION = 'drover is a command-line utility for deploying Python packages to Lambda functions.'
+URL = 'https://github.com/jwilges/drover'
+LICENSE = 'BSD'
