@@ -1,0 +1,2 @@
+from .simpleemailbot import EmailBot
+
