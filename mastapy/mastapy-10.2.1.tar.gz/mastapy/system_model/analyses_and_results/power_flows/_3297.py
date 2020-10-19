@@ -1,0 +1,1313 @@
+﻿'''_3297.py
+
+ConnectionPowerFlow
+'''
+
+
+from mastapy._internal import constructor
+from mastapy.system_model.connections_and_sockets import (
+    _1878, _1874, _1875, _1879,
+    _1887, _1890, _1894, _1898
+)
+from mastapy._internal.cast_exception import CastException
+from mastapy.system_model.connections_and_sockets.gears import (
+    _1902, _1904, _1906, _1908,
+    _1910, _1912, _1914, _1916,
+    _1918, _1921, _1922, _1923,
+    _1926, _1928, _1930, _1932,
+    _1934
+)
+from mastapy.system_model.connections_and_sockets.couplings import (
+    _1936, _1938, _1940, _1942,
+    _1944, _1946
+)
+from mastapy.system_model.analyses_and_results.power_flows import _3346
+from mastapy.system_model.analyses_and_results.system_deflections import (
+    _2288, _2255, _2260, _2262,
+    _2267, _2272, _2275, _2278,
+    _2281, _2285, _2290, _2293,
+    _2296, _2297, _2298, _2309,
+    _2313, _2317, _2321, _2322,
+    _2325, _2328, _2340, _2343,
+    _2349, _2356, _2358, _2361,
+    _2364, _2367, _2379, _2387,
+    _2390
+)
+from mastapy.system_model.analyses_and_results.analysis_cases import _6540
+from mastapy._internal.python_net import python_net_import
+
+_CONNECTION_POWER_FLOW = python_net_import('SMT.MastaAPI.SystemModel.AnalysesAndResults.PowerFlows', 'ConnectionPowerFlow')
+
+
+__docformat__ = 'restructuredtext en'
+__all__ = ('ConnectionPowerFlow',)
+
+
+class ConnectionPowerFlow(_6540.ConnectionStaticLoadAnalysisCase):
+    '''ConnectionPowerFlow
+
+    This is a mastapy class.
+    '''
+
+    TYPE = _CONNECTION_POWER_FLOW
+
+    __hash__ = None
+
+    def __init__(self, instance_to_wrap: 'ConnectionPowerFlow.TYPE'):
+        super().__init__(instance_to_wrap)
+        self._freeze()
+
+    @property
+    def is_loaded(self) -> 'bool':
+        '''bool: 'IsLoaded' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        return self.wrapped.IsLoaded
+
+    @property
+    def component_design(self) -> '_1878.Connection':
+        '''Connection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1878.Connection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to Connection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_belt_connection(self) -> '_1874.BeltConnection':
+        '''BeltConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1874.BeltConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to BeltConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_coaxial_connection(self) -> '_1875.CoaxialConnection':
+        '''CoaxialConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1875.CoaxialConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to CoaxialConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_cvt_belt_connection(self) -> '_1879.CVTBeltConnection':
+        '''CVTBeltConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1879.CVTBeltConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to CVTBeltConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_inter_mountable_component_connection(self) -> '_1887.InterMountableComponentConnection':
+        '''InterMountableComponentConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1887.InterMountableComponentConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to InterMountableComponentConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_planetary_connection(self) -> '_1890.PlanetaryConnection':
+        '''PlanetaryConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1890.PlanetaryConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to PlanetaryConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_rolling_ring_connection(self) -> '_1894.RollingRingConnection':
+        '''RollingRingConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1894.RollingRingConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to RollingRingConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_shaft_to_mountable_component_connection(self) -> '_1898.ShaftToMountableComponentConnection':
+        '''ShaftToMountableComponentConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1898.ShaftToMountableComponentConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to ShaftToMountableComponentConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_agma_gleason_conical_gear_mesh(self) -> '_1902.AGMAGleasonConicalGearMesh':
+        '''AGMAGleasonConicalGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1902.AGMAGleasonConicalGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to AGMAGleasonConicalGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_bevel_differential_gear_mesh(self) -> '_1904.BevelDifferentialGearMesh':
+        '''BevelDifferentialGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1904.BevelDifferentialGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to BevelDifferentialGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_bevel_gear_mesh(self) -> '_1906.BevelGearMesh':
+        '''BevelGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1906.BevelGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to BevelGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_concept_gear_mesh(self) -> '_1908.ConceptGearMesh':
+        '''ConceptGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1908.ConceptGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to ConceptGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_conical_gear_mesh(self) -> '_1910.ConicalGearMesh':
+        '''ConicalGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1910.ConicalGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to ConicalGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_cylindrical_gear_mesh(self) -> '_1912.CylindricalGearMesh':
+        '''CylindricalGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1912.CylindricalGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to CylindricalGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_face_gear_mesh(self) -> '_1914.FaceGearMesh':
+        '''FaceGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1914.FaceGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to FaceGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_gear_mesh(self) -> '_1916.GearMesh':
+        '''GearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1916.GearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to GearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_hypoid_gear_mesh(self) -> '_1918.HypoidGearMesh':
+        '''HypoidGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1918.HypoidGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to HypoidGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_klingelnberg_cyclo_palloid_conical_gear_mesh(self) -> '_1921.KlingelnbergCycloPalloidConicalGearMesh':
+        '''KlingelnbergCycloPalloidConicalGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1921.KlingelnbergCycloPalloidConicalGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to KlingelnbergCycloPalloidConicalGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_klingelnberg_cyclo_palloid_hypoid_gear_mesh(self) -> '_1922.KlingelnbergCycloPalloidHypoidGearMesh':
+        '''KlingelnbergCycloPalloidHypoidGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1922.KlingelnbergCycloPalloidHypoidGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to KlingelnbergCycloPalloidHypoidGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_klingelnberg_cyclo_palloid_spiral_bevel_gear_mesh(self) -> '_1923.KlingelnbergCycloPalloidSpiralBevelGearMesh':
+        '''KlingelnbergCycloPalloidSpiralBevelGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1923.KlingelnbergCycloPalloidSpiralBevelGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to KlingelnbergCycloPalloidSpiralBevelGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_spiral_bevel_gear_mesh(self) -> '_1926.SpiralBevelGearMesh':
+        '''SpiralBevelGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1926.SpiralBevelGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to SpiralBevelGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_straight_bevel_diff_gear_mesh(self) -> '_1928.StraightBevelDiffGearMesh':
+        '''StraightBevelDiffGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1928.StraightBevelDiffGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to StraightBevelDiffGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_straight_bevel_gear_mesh(self) -> '_1930.StraightBevelGearMesh':
+        '''StraightBevelGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1930.StraightBevelGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to StraightBevelGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_worm_gear_mesh(self) -> '_1932.WormGearMesh':
+        '''WormGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1932.WormGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to WormGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_zerol_bevel_gear_mesh(self) -> '_1934.ZerolBevelGearMesh':
+        '''ZerolBevelGearMesh: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1934.ZerolBevelGearMesh.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to ZerolBevelGearMesh. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_clutch_connection(self) -> '_1936.ClutchConnection':
+        '''ClutchConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1936.ClutchConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to ClutchConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_concept_coupling_connection(self) -> '_1938.ConceptCouplingConnection':
+        '''ConceptCouplingConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1938.ConceptCouplingConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to ConceptCouplingConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_coupling_connection(self) -> '_1940.CouplingConnection':
+        '''CouplingConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1940.CouplingConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to CouplingConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_part_to_part_shear_coupling_connection(self) -> '_1942.PartToPartShearCouplingConnection':
+        '''PartToPartShearCouplingConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1942.PartToPartShearCouplingConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to PartToPartShearCouplingConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_spring_damper_connection(self) -> '_1944.SpringDamperConnection':
+        '''SpringDamperConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1944.SpringDamperConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to SpringDamperConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def component_design_of_type_torque_converter_connection(self) -> '_1946.TorqueConverterConnection':
+        '''TorqueConverterConnection: 'ComponentDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1946.TorqueConverterConnection.TYPE not in self.wrapped.ComponentDesign.__class__.__mro__:
+            raise CastException('Failed to cast component_design to TorqueConverterConnection. Expected: {}.'.format(self.wrapped.ComponentDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ComponentDesign.__class__)(self.wrapped.ComponentDesign) if self.wrapped.ComponentDesign else None
+
+    @property
+    def connection_design(self) -> '_1878.Connection':
+        '''Connection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1878.Connection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to Connection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_belt_connection(self) -> '_1874.BeltConnection':
+        '''BeltConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1874.BeltConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to BeltConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_coaxial_connection(self) -> '_1875.CoaxialConnection':
+        '''CoaxialConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1875.CoaxialConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to CoaxialConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_cvt_belt_connection(self) -> '_1879.CVTBeltConnection':
+        '''CVTBeltConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1879.CVTBeltConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to CVTBeltConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_inter_mountable_component_connection(self) -> '_1887.InterMountableComponentConnection':
+        '''InterMountableComponentConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1887.InterMountableComponentConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to InterMountableComponentConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_planetary_connection(self) -> '_1890.PlanetaryConnection':
+        '''PlanetaryConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1890.PlanetaryConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to PlanetaryConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_rolling_ring_connection(self) -> '_1894.RollingRingConnection':
+        '''RollingRingConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1894.RollingRingConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to RollingRingConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_shaft_to_mountable_component_connection(self) -> '_1898.ShaftToMountableComponentConnection':
+        '''ShaftToMountableComponentConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1898.ShaftToMountableComponentConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to ShaftToMountableComponentConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_agma_gleason_conical_gear_mesh(self) -> '_1902.AGMAGleasonConicalGearMesh':
+        '''AGMAGleasonConicalGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1902.AGMAGleasonConicalGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to AGMAGleasonConicalGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_bevel_differential_gear_mesh(self) -> '_1904.BevelDifferentialGearMesh':
+        '''BevelDifferentialGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1904.BevelDifferentialGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to BevelDifferentialGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_bevel_gear_mesh(self) -> '_1906.BevelGearMesh':
+        '''BevelGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1906.BevelGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to BevelGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_concept_gear_mesh(self) -> '_1908.ConceptGearMesh':
+        '''ConceptGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1908.ConceptGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to ConceptGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_conical_gear_mesh(self) -> '_1910.ConicalGearMesh':
+        '''ConicalGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1910.ConicalGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to ConicalGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_cylindrical_gear_mesh(self) -> '_1912.CylindricalGearMesh':
+        '''CylindricalGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1912.CylindricalGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to CylindricalGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_face_gear_mesh(self) -> '_1914.FaceGearMesh':
+        '''FaceGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1914.FaceGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to FaceGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_gear_mesh(self) -> '_1916.GearMesh':
+        '''GearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1916.GearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to GearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_hypoid_gear_mesh(self) -> '_1918.HypoidGearMesh':
+        '''HypoidGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1918.HypoidGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to HypoidGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_klingelnberg_cyclo_palloid_conical_gear_mesh(self) -> '_1921.KlingelnbergCycloPalloidConicalGearMesh':
+        '''KlingelnbergCycloPalloidConicalGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1921.KlingelnbergCycloPalloidConicalGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to KlingelnbergCycloPalloidConicalGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_klingelnberg_cyclo_palloid_hypoid_gear_mesh(self) -> '_1922.KlingelnbergCycloPalloidHypoidGearMesh':
+        '''KlingelnbergCycloPalloidHypoidGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1922.KlingelnbergCycloPalloidHypoidGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to KlingelnbergCycloPalloidHypoidGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_klingelnberg_cyclo_palloid_spiral_bevel_gear_mesh(self) -> '_1923.KlingelnbergCycloPalloidSpiralBevelGearMesh':
+        '''KlingelnbergCycloPalloidSpiralBevelGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1923.KlingelnbergCycloPalloidSpiralBevelGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to KlingelnbergCycloPalloidSpiralBevelGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_spiral_bevel_gear_mesh(self) -> '_1926.SpiralBevelGearMesh':
+        '''SpiralBevelGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1926.SpiralBevelGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to SpiralBevelGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_straight_bevel_diff_gear_mesh(self) -> '_1928.StraightBevelDiffGearMesh':
+        '''StraightBevelDiffGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1928.StraightBevelDiffGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to StraightBevelDiffGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_straight_bevel_gear_mesh(self) -> '_1930.StraightBevelGearMesh':
+        '''StraightBevelGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1930.StraightBevelGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to StraightBevelGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_worm_gear_mesh(self) -> '_1932.WormGearMesh':
+        '''WormGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1932.WormGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to WormGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_zerol_bevel_gear_mesh(self) -> '_1934.ZerolBevelGearMesh':
+        '''ZerolBevelGearMesh: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1934.ZerolBevelGearMesh.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to ZerolBevelGearMesh. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_clutch_connection(self) -> '_1936.ClutchConnection':
+        '''ClutchConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1936.ClutchConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to ClutchConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_concept_coupling_connection(self) -> '_1938.ConceptCouplingConnection':
+        '''ConceptCouplingConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1938.ConceptCouplingConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to ConceptCouplingConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_coupling_connection(self) -> '_1940.CouplingConnection':
+        '''CouplingConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1940.CouplingConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to CouplingConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_part_to_part_shear_coupling_connection(self) -> '_1942.PartToPartShearCouplingConnection':
+        '''PartToPartShearCouplingConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1942.PartToPartShearCouplingConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to PartToPartShearCouplingConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_spring_damper_connection(self) -> '_1944.SpringDamperConnection':
+        '''SpringDamperConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1944.SpringDamperConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to SpringDamperConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def connection_design_of_type_torque_converter_connection(self) -> '_1946.TorqueConverterConnection':
+        '''TorqueConverterConnection: 'ConnectionDesign' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _1946.TorqueConverterConnection.TYPE not in self.wrapped.ConnectionDesign.__class__.__mro__:
+            raise CastException('Failed to cast connection_design to TorqueConverterConnection. Expected: {}.'.format(self.wrapped.ConnectionDesign.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.ConnectionDesign.__class__)(self.wrapped.ConnectionDesign) if self.wrapped.ConnectionDesign else None
+
+    @property
+    def power_flow(self) -> '_3346.PowerFlow':
+        '''PowerFlow: 'PowerFlow' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        return constructor.new(_3346.PowerFlow)(self.wrapped.PowerFlow) if self.wrapped.PowerFlow else None
+
+    @property
+    def torsional_system_deflection_analysis(self) -> '_2288.ConnectionSystemDeflection':
+        '''ConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2288.ConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to ConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_agma_gleason_conical_gear_mesh_system_deflection(self) -> '_2255.AGMAGleasonConicalGearMeshSystemDeflection':
+        '''AGMAGleasonConicalGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2255.AGMAGleasonConicalGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to AGMAGleasonConicalGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_belt_connection_system_deflection(self) -> '_2260.BeltConnectionSystemDeflection':
+        '''BeltConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2260.BeltConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to BeltConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_bevel_differential_gear_mesh_system_deflection(self) -> '_2262.BevelDifferentialGearMeshSystemDeflection':
+        '''BevelDifferentialGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2262.BevelDifferentialGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to BevelDifferentialGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_bevel_gear_mesh_system_deflection(self) -> '_2267.BevelGearMeshSystemDeflection':
+        '''BevelGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2267.BevelGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to BevelGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_clutch_connection_system_deflection(self) -> '_2272.ClutchConnectionSystemDeflection':
+        '''ClutchConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2272.ClutchConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to ClutchConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_coaxial_connection_system_deflection(self) -> '_2275.CoaxialConnectionSystemDeflection':
+        '''CoaxialConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2275.CoaxialConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to CoaxialConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_concept_coupling_connection_system_deflection(self) -> '_2278.ConceptCouplingConnectionSystemDeflection':
+        '''ConceptCouplingConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2278.ConceptCouplingConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to ConceptCouplingConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_concept_gear_mesh_system_deflection(self) -> '_2281.ConceptGearMeshSystemDeflection':
+        '''ConceptGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2281.ConceptGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to ConceptGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_conical_gear_mesh_system_deflection(self) -> '_2285.ConicalGearMeshSystemDeflection':
+        '''ConicalGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2285.ConicalGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to ConicalGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_coupling_connection_system_deflection(self) -> '_2290.CouplingConnectionSystemDeflection':
+        '''CouplingConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2290.CouplingConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to CouplingConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_cvt_belt_connection_system_deflection(self) -> '_2293.CVTBeltConnectionSystemDeflection':
+        '''CVTBeltConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2293.CVTBeltConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to CVTBeltConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_cylindrical_gear_mesh_system_deflection(self) -> '_2296.CylindricalGearMeshSystemDeflection':
+        '''CylindricalGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2296.CylindricalGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to CylindricalGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_cylindrical_gear_mesh_system_deflection_timestep(self) -> '_2297.CylindricalGearMeshSystemDeflectionTimestep':
+        '''CylindricalGearMeshSystemDeflectionTimestep: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2297.CylindricalGearMeshSystemDeflectionTimestep.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to CylindricalGearMeshSystemDeflectionTimestep. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_cylindrical_gear_mesh_system_deflection_with_ltca_results(self) -> '_2298.CylindricalGearMeshSystemDeflectionWithLTCAResults':
+        '''CylindricalGearMeshSystemDeflectionWithLTCAResults: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2298.CylindricalGearMeshSystemDeflectionWithLTCAResults.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to CylindricalGearMeshSystemDeflectionWithLTCAResults. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_face_gear_mesh_system_deflection(self) -> '_2309.FaceGearMeshSystemDeflection':
+        '''FaceGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2309.FaceGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to FaceGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_gear_mesh_system_deflection(self) -> '_2313.GearMeshSystemDeflection':
+        '''GearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2313.GearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to GearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_hypoid_gear_mesh_system_deflection(self) -> '_2317.HypoidGearMeshSystemDeflection':
+        '''HypoidGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2317.HypoidGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to HypoidGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_inter_mountable_component_connection_system_deflection(self) -> '_2321.InterMountableComponentConnectionSystemDeflection':
+        '''InterMountableComponentConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2321.InterMountableComponentConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to InterMountableComponentConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_klingelnberg_cyclo_palloid_conical_gear_mesh_system_deflection(self) -> '_2322.KlingelnbergCycloPalloidConicalGearMeshSystemDeflection':
+        '''KlingelnbergCycloPalloidConicalGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2322.KlingelnbergCycloPalloidConicalGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to KlingelnbergCycloPalloidConicalGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_klingelnberg_cyclo_palloid_hypoid_gear_mesh_system_deflection(self) -> '_2325.KlingelnbergCycloPalloidHypoidGearMeshSystemDeflection':
+        '''KlingelnbergCycloPalloidHypoidGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2325.KlingelnbergCycloPalloidHypoidGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to KlingelnbergCycloPalloidHypoidGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_klingelnberg_cyclo_palloid_spiral_bevel_gear_mesh_system_deflection(self) -> '_2328.KlingelnbergCycloPalloidSpiralBevelGearMeshSystemDeflection':
+        '''KlingelnbergCycloPalloidSpiralBevelGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2328.KlingelnbergCycloPalloidSpiralBevelGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to KlingelnbergCycloPalloidSpiralBevelGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_part_to_part_shear_coupling_connection_system_deflection(self) -> '_2340.PartToPartShearCouplingConnectionSystemDeflection':
+        '''PartToPartShearCouplingConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2340.PartToPartShearCouplingConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to PartToPartShearCouplingConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_planetary_connection_system_deflection(self) -> '_2343.PlanetaryConnectionSystemDeflection':
+        '''PlanetaryConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2343.PlanetaryConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to PlanetaryConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_rolling_ring_connection_system_deflection(self) -> '_2349.RollingRingConnectionSystemDeflection':
+        '''RollingRingConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2349.RollingRingConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to RollingRingConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_shaft_to_mountable_component_connection_system_deflection(self) -> '_2356.ShaftToMountableComponentConnectionSystemDeflection':
+        '''ShaftToMountableComponentConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2356.ShaftToMountableComponentConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to ShaftToMountableComponentConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_spiral_bevel_gear_mesh_system_deflection(self) -> '_2358.SpiralBevelGearMeshSystemDeflection':
+        '''SpiralBevelGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2358.SpiralBevelGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to SpiralBevelGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_spring_damper_connection_system_deflection(self) -> '_2361.SpringDamperConnectionSystemDeflection':
+        '''SpringDamperConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2361.SpringDamperConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to SpringDamperConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_straight_bevel_diff_gear_mesh_system_deflection(self) -> '_2364.StraightBevelDiffGearMeshSystemDeflection':
+        '''StraightBevelDiffGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2364.StraightBevelDiffGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to StraightBevelDiffGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_straight_bevel_gear_mesh_system_deflection(self) -> '_2367.StraightBevelGearMeshSystemDeflection':
+        '''StraightBevelGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2367.StraightBevelGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to StraightBevelGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_torque_converter_connection_system_deflection(self) -> '_2379.TorqueConverterConnectionSystemDeflection':
+        '''TorqueConverterConnectionSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2379.TorqueConverterConnectionSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to TorqueConverterConnectionSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_worm_gear_mesh_system_deflection(self) -> '_2387.WormGearMeshSystemDeflection':
+        '''WormGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2387.WormGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to WormGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
+
+    @property
+    def torsional_system_deflection_analysis_of_type_zerol_bevel_gear_mesh_system_deflection(self) -> '_2390.ZerolBevelGearMeshSystemDeflection':
+        '''ZerolBevelGearMeshSystemDeflection: 'TorsionalSystemDeflectionAnalysis' is the original name of this property.
+
+        Note:
+            This property is readonly.
+        '''
+
+        if _2390.ZerolBevelGearMeshSystemDeflection.TYPE not in self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__mro__:
+            raise CastException('Failed to cast torsional_system_deflection_analysis to ZerolBevelGearMeshSystemDeflection. Expected: {}.'.format(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__.__qualname__))
+
+        return constructor.new_override(self.wrapped.TorsionalSystemDeflectionAnalysis.__class__)(self.wrapped.TorsionalSystemDeflectionAnalysis) if self.wrapped.TorsionalSystemDeflectionAnalysis else None
