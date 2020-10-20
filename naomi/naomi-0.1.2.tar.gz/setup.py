@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+from setuptools import setup
+
+packages = \
+['naomi']
+
+package_data = \
+{'': ['*'], 'naomi': ['static/images/*', 'templates/*']}
+
+entry_points = \
+{'console_scripts': ['customize = naomi.overrides:admin_override']}
+
+setup_kwargs = {
+    'name': 'naomi',
+    'version': '0.1.2',
+    'description': '',
+    'long_description': None,
+    'author': 'drazum',
+    'author_email': 'domagoj.razum1@gmail.com',
+    'maintainer': None,
+    'maintainer_email': None,
+    'url': None,
+    'packages': packages,
+    'package_data': package_data,
+    'entry_points': entry_points,
+    'python_requires': '>=3.6,<4.0',
+}
+
+
+setup(**setup_kwargs)
