@@ -1,0 +1,101 @@
+from starlette.types import Receive, Scope, Send
+from starlette.requests import HTTPConnection, Request
+from starlette.responses import RedirectResponse
+from base64 import b64decode, b64encode
+from requests_oauthlib import OAuth2Session
+import itsdangerous
+from itsdangerous.exc import BadSignature
+import json
+from . import merge_auth_info
+
+MAX_AGE: int = 31 * 24 * 60 * 60  # a month in seconds
+
+
+def _get_cookie_configs(config):
+    _cookie_configs = {}
+    for k, v in config.items():
+        _paths = []
+        uri = v.get('uri')
+        if isinstance(uri, list):
+            _paths.extend(uri)
+        if isinstance(uri, str):
+            _paths.append(uri)
+        _cookie_configs[k] = {'uris': tuple(_paths), 'config': v}
+    return _cookie_configs
+
+
+def _get_signer(config):
+    _cookie_key = __name__
+    if 'secret' in config:
+        _cookie_key = config['secret']
+    return itsdangerous.TimestampSigner(str(_cookie_key))
+
+
+def _get_max_age(config):
+    cookie_max_age = MAX_AGE
+    if config.get('max_age', None) is not None:
+        _cookie_max_age = config['max_age']
+    return cookie_max_age
+
+
+def _get_cookie_data(oauth2_cookie_config, cookie_data):
+    _cookie_signer = _get_signer(oauth2_cookie_config)
+    _cookie_max_age = _get_max_age(oauth2_cookie_config)
+    try:
+        _cookie_data = _cookie_signer.unsign(cookie_data, _cookie_max_age)
+        _cookie_data = json.loads(b64decode(_cookie_data))
+    except (BadSignature, Exception) as e:
+        _cookie_data = {}
+    return _cookie_data
+
+
+def _get_state_cookie(config, state):
+    _cookie_content = {'state': state, 'type': 'state'}
+    data = b64encode(json.dumps(_cookie_content).encode('utf-8'))
+    data = _get_signer(config).sign(data)
+    return data
+
+
+async def process(config, scope: Scope, receive: Receive, send: Send) -> None:
+    cookie_data = {}
+    _oauth_cookie_configs = _get_cookie_configs(config)
+    for oauth2_cookie_name, oauth2_cookie_config in _oauth_cookie_configs.items():
+        if any(scope['path'].startswith(p) for p in oauth2_cookie_config['uris']):
+            oauth2_cookie_config = oauth2_cookie_config['config']
+            # TODO: get path
+            http_connection = HTTPConnection(scope)
+
+            # do we have a cookie?
+            if oauth2_cookie_name in http_connection.cookies:
+                _cookie_data = _get_cookie_data(
+                    oauth2_cookie_config, http_connection.cookies[oauth2_cookie_name].encode('utf-8')
+                )
+
+                _cookie_type = _cookie_data.get('type')
+                if _cookie_type is not None:
+                    if _cookie_type == 'state':
+                        # its a state cookie > do oauth2 code_grant req
+                        i = 0
+                    if _cookie_type == 'bla':
+                        # real cookie w/ auth data
+                        cookie_data.update({oauth2_cookie_name: _cookie_data})
+                else:
+                    # defect cookie / not our cookie > try again?
+                    pass
+            else:
+                # no cookie > do oauth2 redirect
+                _request = Request(scope, receive)
+                _client = OAuth2Session(
+                    client_id=oauth2_cookie_config['client_id'],
+                    redirect_uri=str(_request.url)
+                )
+                _auth_url, state = _client.authorization_url(f"{oauth2_cookie_config['idp']}/authorize")
+                response = RedirectResponse(_auth_url, status_code=307)
+                response.set_cookie(
+                    key=oauth2_cookie_name, value=_get_state_cookie(oauth2_cookie_config, state),
+                    secure=True, samesite='none', httponly=True, expires='session'
+                )
+                return response(scope, receive, send)
+
+    if len(cookie_data) > 0:
+        merge_auth_info(scope, {'oauth2_cookie': cookie_data})
