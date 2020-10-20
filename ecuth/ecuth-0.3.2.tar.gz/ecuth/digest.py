@@ -1,0 +1,2 @@
+class DigestRetriever(Retriever):
+    pass    
